@@ -12,6 +12,22 @@ app.get('/cliente', async () => {
     return { clientes }
 })
 
+app.post('/cliente', (req: Request, res: Response) => {
+    
+    async function main() {
+    let cliente: Prisma.ClienteCreateInput
+    
+    cliente =  {
+        cpf: 'elsa@prisma.io',
+        nome: 'Elsa Prisma',
+        fotoUrl: 'foto.com/elsa.png',
+        seloid: '1'
+    }
+    // Pass 'user' object into query
+    const createCliente = await prisma.cliente.create({ data: cliente })
+    }
+});
+
 app.get('/selo', async () => {
     const selos = await prisma.selo.findMany()
 
