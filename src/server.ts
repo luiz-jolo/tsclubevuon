@@ -30,9 +30,36 @@ app.get('/trilha', async () => {
     return { trilhas }
 })
 
-// app.post('/cliente', (request) =>{
-//     const {}
-// })
+app.get('/trilhacliente', async () => {
+    const trilhasCliente = await prisma.trilhaCliente.findMany()
+
+    return { trilhasCliente }
+})
+
+app.get('/missao', async () => {
+    const missaos = await prisma.missao.findMany()
+
+    return { missaos }
+})
+
+app.get('/oferta', async () => {
+    const ofertas = await prisma.oferta.findMany()
+
+    return { ofertas }
+})
+
+app.get('/indicado', async () => {
+    const indicados = await prisma.indicado.findMany()
+
+    return { indicados }
+})
+
+app.get('/vuonVenda', async () => {
+    const vuonVendas = await prisma.vuonVenda.findMany()
+
+    return { vuonVendas }
+})
+
 app.listen({
     host: '0.0.0.0',
     port: process.env.PORT ? Number(process.env.PORT) : 3333
