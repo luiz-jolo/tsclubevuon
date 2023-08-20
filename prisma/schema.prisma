@@ -54,3 +54,54 @@ model Trilhacliente {
 
   @@map("trilhacliente")
 }
+
+
+model Missao {
+  id        String    @id @default(uuid())
+  titulo    String    
+  pontos    Int
+  fotourl   String?   
+  trilaid   String?
+  ean       String? @default("0")
+
+  @@map("missao")
+}
+
+model Missaocliente {
+  id          String    @id @default(uuid())
+  clientid        String  
+  missaoid        String?
+
+  @@map("missaocliente")
+}
+
+model Oferta {
+  id        String    @id @default(uuid())
+  titulo    String    
+  pontos    Int
+  fotourl   String?   
+  exclusiva Boolean   @default(false)
+
+  @@map("oferta")
+}
+
+model Indicado {
+  id              String    @id @default(uuid())
+  cpfcliente      String    
+  cpfindicado     String    
+  sucesso         Boolean   @default(false)
+  createdAt DateTime? @default(now())
+
+  @@map("indicado")
+}
+
+model Vuonvenda {
+  id              String    @id @default(uuid())
+  cpf             String    
+  nomeproduto     String
+  ean             String
+  loja            String
+  preco           Int
+
+  @@map("vuonvenda")
+}
